@@ -1,0 +1,22 @@
+{
+    "name": "typhonius/drift-php",
+    "description": "A PHP SDK for Drift",
+    "authors": [
+        {
+            "name": "Adam Malone",
+            "email": "adam@adammalone.net"
+        }
+    ],
+    "license": "MIT",
+    "require": {
+        "guzzlehttp/guzzle": "^7.2",
+        "league/oauth2-client": "^2.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Drift\\Client\\": "src/Client",
+            "Drift\\Endpoints\\": "src/Endpoints",
+            "Drift\\Response\\": "src/Response"
+        }
+    }
+}
