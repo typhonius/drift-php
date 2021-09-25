@@ -13,28 +13,24 @@ use League\OAuth2\Client\Provider\GenericProvider;
  */
 class Client
 {
-    // /**
-    //  * @var ConnectorInterface The API connector.
-    //  */
-    // protected $connector;
 
     // /**
     //  * @var array<string, mixed> Query strings to be applied to the request.
     //  */
-    // protected $query = [];
+    protected $query = [];
 
     // /**
     //  * @var array<string, mixed> Guzzle options to be applied to the request.
     //  */
-    // protected $options = [];
+    protected $options = [];
 
     // /**
     //  * @var array<string, mixed> Request options from each individual API call.
     //  */
-    // private $requestOptions = [];
+    private $requestOptions = [];
 
     /**
-     * @var string The base URI for Acquia Cloud API.
+     * @var string The base URL for Drift API.
      */
     protected $baseUri;
 
@@ -45,25 +41,20 @@ class Client
 
     protected $token;
 
-    protected $provider;
-
-    protected $accessToken;
-
 
     /**
      * @inheritdoc
      */
     public function __construct(string $token, string $base_uri = null)
     {
-        $this->baseUri = 'https://driftapi.com/';
+        $this->token = $token;
+
+        $this->baseUri = 'https://driftapi.com';
         if ($base_uri) {
             $this->baseUri = $base_uri;
         }
 
-        $this->client = new GuzzleClient();
-
-        $this->token = $token;
-
+        $this->client = new GuzzleClient(['base_uri' => $this->baseUri]);
     }
 
     /**
@@ -104,13 +95,13 @@ class Client
      */
     public function request(string $verb, string $path, array $options = [])
     {
-        $url = $this->getBaseUri() . $path;
 
-        $response = $this->client->get($url, [
-            'headers' => [
-                'Authorization' => "Bearer " . $this->token,
-            ]
-        ]);
+        $options['headers'] = [
+            'Authorization' => "Bearer " . $this->token,
+        ];
+
+        $options['query'] = $this->query;
+        $response = $this->client->$verb($path, $options);
 
         return $this->processResponse($response);
     }
@@ -121,21 +112,24 @@ class Client
      */
     public function processResponse(ResponseInterface $response)
     {
+        // var_dump($response);
+
+        // Required for getTranscript - we need a new method here.
+        // $body_json = $response->getBody()->getContents();
 
         $body_json = $response->getBody();
+
         $body = json_decode($body_json);
 
-        var_dump($body);
-
-        // if (property_exists($body, 'data')) {
-        //     return $body->data;
-        // }
+        if (property_exists($body, 'data')) {
+            return $body->data;
+        }
 
         // if (property_exists($body, 'error') && property_exists($body, 'message')) {
         //     throw new ApiErrorException($body);
         // }
 
-        // return $body;
+        return $body;
     }
 
     /**

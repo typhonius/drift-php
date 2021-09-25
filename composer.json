@@ -16,6 +16,7 @@
         "psr-4": {
             "Drift\\Client\\": "src/Client",
             "Drift\\Endpoints\\": "src/Endpoints",
+            "Drift\\Models\\": "src/Models",
             "Drift\\Response\\": "src/Response"
         }
     }
