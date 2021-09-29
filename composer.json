@@ -9,8 +9,7 @@
     ],
     "license": "MIT",
     "require": {
-        "guzzlehttp/guzzle": "^7.2",
-        "league/oauth2-client": "^2.4"
+        "guzzlehttp/guzzle": "^7.2"
     },
     "autoload": {
         "psr-4": {

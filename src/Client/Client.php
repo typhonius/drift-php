@@ -7,6 +7,7 @@ use GuzzleHttp\Exception\BadResponseException;
 use GuzzleHttp\Client as GuzzleClient;
 use Psr\Http\Message\RequestInterface;
 use League\OAuth2\Client\Provider\GenericProvider;
+use GuzzleHttp\Exception\ClientException;
 
 /**
  * Class Client
@@ -37,9 +38,12 @@ class Client
     /**
      * @var GuzzleClient The client used to make HTTP requests to the API.
      */
-    protected $client;
+    private $client;
 
-    protected $token;
+    /**
+     * @var token The secret token used to authenticate API calls.
+     */
+    private $token;
 
 
     /**
@@ -101,7 +105,13 @@ class Client
         ];
 
         $options['query'] = $this->query;
-        $response = $this->client->$verb($path, $options);
+
+        try {
+            $response = $this->client->$verb($path, $options);
+        } catch(ClientException $response) {
+            echo $response->getMessage();
+            exit;
+        }
 
         return $this->processResponse($response);
     }
@@ -112,22 +122,20 @@ class Client
      */
     public function processResponse(ResponseInterface $response)
     {
-        // var_dump($response);
 
         // Required for getTranscript - we need a new method here.
         // $body_json = $response->getBody()->getContents();
 
         $body_json = $response->getBody();
-
         $body = json_decode($body_json);
 
         if (property_exists($body, 'data')) {
+            // Work around the weird edge case for how the accounts response is structured.
+            if (property_exists($body->data, 'accounts')) {
+                return $body->data->accounts;
+            }
             return $body->data;
         }
-
-        // if (property_exists($body, 'error') && property_exists($body, 'message')) {
-        //     throw new ApiErrorException($body);
-        // }
 
         return $body;
     }
