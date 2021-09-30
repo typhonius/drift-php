@@ -2,7 +2,7 @@
 
 namespace Drift\Models;
 
-class UserModel
+class UserModel extends BaseModel
 {
 
     public $id;

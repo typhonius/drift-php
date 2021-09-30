@@ -12,7 +12,7 @@ use GuzzleHttp\Exception\ClientException;
 /**
  * Class Client
  */
-class Client
+class Client implements ClientInterface
 {
 
     // /**
@@ -104,11 +104,19 @@ class Client
             'Authorization' => "Bearer " . $this->token,
         ];
 
+        $userAgent = sprintf(
+            "%s/%s (https://github.com/typhonius/drift-php)",
+            'drift-php',
+            $this->getVersion()
+        );
+
+        $options['headers']['User-Agent'] = $userAgent;
         $options['query'] = $this->query;
 
         try {
             $response = $this->client->$verb($path, $options);
         } catch(ClientException $response) {
+            var_dump($response->getMessage());
             echo $response->getMessage();
             exit;
         }
@@ -131,7 +139,7 @@ class Client
 
         if (property_exists($body, 'data')) {
             // Work around the weird edge case for how the accounts response is structured.
-            if (property_exists($body->data, 'accounts')) {
+            if (is_object($body->data) && property_exists($body->data, 'accounts')) {
                 return $body->data->accounts;
             }
             return $body->data;

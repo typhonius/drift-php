@@ -5,7 +5,7 @@ namespace Drift\Endpoints;
 use Drift\Response\AccountList;
 use Drift\Models\AccountModel;
 
-class Accounts extends DriftApiBase implements DriftEndpointInterface
+class Accounts extends DriftApiBase
 {
 
 
@@ -21,7 +21,7 @@ class Accounts extends DriftApiBase implements DriftEndpointInterface
     }
 
 
-    public function create($account)
+    public function create(AccountModel $account)
     {
         $options = [
             'json' => $account
@@ -29,11 +29,18 @@ class Accounts extends DriftApiBase implements DriftEndpointInterface
         return new AccountModel($this->client->request('POST', 'accounts/create', $options));
     }
 
-    public function update($userId, $name, $value)
+    public function update(AccountModel $account)
     {
-
+        $options = [
+            'json' => $account
+        ];
+        $request = $this->client->request('PATCH', 'accounts/update', $options);
     }
 
-    public function delete(){}
+    public function delete($accountId)
+    {
+        // @TODO need to create a response object for this.
+        $this->client->request('DELETE', "accounts/${accountId}");
+    }
 
 }

@@ -2,7 +2,7 @@
 
 namespace Drift\Models;
 
-class AccountModel
+class AccountModel extends BaseModel implements BaseModelInterface
 {
 
     public $ownerId;

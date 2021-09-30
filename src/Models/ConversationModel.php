@@ -2,7 +2,7 @@
 
 namespace Drift\Models;
 
-class ConversationModel
+class ConversationModel extends BaseModel
 {
 
     public $id;

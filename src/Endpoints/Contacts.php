@@ -5,7 +5,7 @@ namespace Drift\Endpoints;
 use Drift\Response\UserList;
 use Drift\Models\UserModel;
 
-class Contacts extends DriftApiBase implements DriftEndpointInterface
+class Contacts extends DriftApiBase
 {
 
 
