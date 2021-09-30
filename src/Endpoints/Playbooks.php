@@ -2,9 +2,8 @@
 
 namespace Drift\Endpoints;
 
-use Drift\Response\MeetingList;
-use Drift\Response\UserList;
-use Drift\Models\UserModel;
+use Drift\Response\PlaybookList;
+use Drift\Response\ClpList;
 
 class Playbooks extends DriftApiBase
 {
@@ -16,7 +15,6 @@ class Playbooks extends DriftApiBase
 
     public function getAllClp()
     {
-        // @TODO do we need a model for CLPs?
-        $this->client->request('GET', 'playbooks/clp');
+        return new ClpList($this->client->request('GET', 'playbooks/clp'));
     }
 }

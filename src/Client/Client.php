@@ -15,19 +15,19 @@ use GuzzleHttp\Exception\ClientException;
 class Client implements ClientInterface
 {
 
-    // /**
-    //  * @var array<string, mixed> Query strings to be applied to the request.
-    //  */
+    /**
+     * @var array<string, mixed> Query strings to be applied to the request.
+     */
     protected $query = [];
 
-    // /**
-    //  * @var array<string, mixed> Guzzle options to be applied to the request.
-    //  */
+    /**
+     * @var array<string, mixed> Guzzle options to be applied to the request.
+     */
     protected $options = [];
 
-    // /**
-    //  * @var array<string, mixed> Request options from each individual API call.
-    //  */
+    /**
+     * @var array<string, mixed> Request options from each individual API call.
+     */
     private $requestOptions = [];
 
     /**
@@ -101,7 +101,7 @@ class Client implements ClientInterface
     {
 
         $options['headers'] = [
-            'Authorization' => "Bearer " . $this->token,
+            'Authorization' => 'Bearer ' . $this->token,
         ];
 
         $userAgent = sprintf(
@@ -116,7 +116,8 @@ class Client implements ClientInterface
         try {
             $response = $this->client->$verb($path, $options);
         } catch(ClientException $response) {
-            var_dump($response->getMessage());
+            // @TODO Consider using the following as Guzzle truncates the error message
+            // $response = json_decode($ex->getResponse()->getBody()->getContents(), true);
             echo $response->getMessage();
             exit;
         }
@@ -136,8 +137,7 @@ class Client implements ClientInterface
 
         $body_json = $response->getBody();
         $body = json_decode($body_json);
-
-        if (property_exists($body, 'data')) {
+        if (is_object($body) && property_exists($body, 'data')) {
             // Work around the weird edge case for how the accounts response is structured.
             if (is_object($body->data) && property_exists($body->data, 'accounts')) {
                 return $body->data->accounts;

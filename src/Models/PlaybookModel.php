@@ -13,7 +13,7 @@ class PlaybookModel extends BaseModel
     public $updatedAt;
     public $createdAuthorId;
     public $updatedAuthorId;
-    public $interactionId;
+    // public $interactionId;
     public $reportType;
     public $goals;
 
@@ -27,7 +27,7 @@ class PlaybookModel extends BaseModel
         $this->updatedAt = $playbook->updatedAt;
         $this->createdAuthorId = $playbook->createdAuthorId;
         $this->updatedAuthorId = $playbook->updatedAuthorId;
-        $this->interactionId = $playbook->interactionId;
+        // $this->interactionId = $playbook->interactionId;
         $this->reportType = $playbook->reportType;
         $this->goals = $playbook->goals;
     }

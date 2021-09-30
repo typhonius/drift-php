@@ -8,8 +8,6 @@ use Drift\Models\AccountModel;
 class Accounts extends DriftApiBase
 {
 
-
-
     public function get($accountId)
     {
         return new AccountModel($this->client->request('GET', "accounts/${accountId}"));
@@ -19,7 +17,6 @@ class Accounts extends DriftApiBase
     {
         return new AccountList($this->client->request('GET', 'accounts'));
     }
-
 
     public function create(AccountModel $account)
     {
