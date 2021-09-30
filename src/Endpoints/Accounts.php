@@ -39,5 +39,4 @@ class Accounts extends DriftApiBase
         // @TODO need to create a response object for this.
         $this->client->request('DELETE', "accounts/${accountId}");
     }
-
 }

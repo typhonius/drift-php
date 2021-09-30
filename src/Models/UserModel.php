@@ -33,5 +33,4 @@ class UserModel extends BaseModel
         $this->createdAt = $user->createdAt;
         $this->updatedAt = $user->updatedAt;
     }
-
 }

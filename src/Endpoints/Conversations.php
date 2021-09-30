@@ -58,5 +58,4 @@ class Conversations extends DriftApiBase
     {
          return $this->client->request('GET', "attachments/${documentId}/data");
     }
-
 }

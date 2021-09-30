@@ -37,6 +37,4 @@ class Users extends DriftApiBase
         $this->client->addQuery('max_start_time', hrtime(true));
         return new MeetingList($this->client->request('GET', 'users/meetings/org'));
     }
-
-
 }

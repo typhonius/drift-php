@@ -41,5 +41,4 @@ class MeetingModel extends BaseModel implements BaseModelInterface
         $this->meetingNotes = $meeting->meetingNotes;
         $this->bookedBy = $meeting->bookedBy;
     }
-
 }

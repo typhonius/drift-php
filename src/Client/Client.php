@@ -70,22 +70,6 @@ class Client implements ClientInterface
     }
 
     /**
-     * Client factory method for instantiating.
-     *
-     * @param ConnectorInterface $connector
-     *
-     * @return static
-     */
-    public static function factory(ConnectorInterface $connector)
-    {
-        $client = new static(
-            $connector
-        );
-
-        return $client;
-    }
-
-    /**
      * @inheritdoc
      */
     public function getVersion(): string
@@ -115,7 +99,7 @@ class Client implements ClientInterface
 
         try {
             $response = $this->client->$verb($path, $options);
-        } catch(ClientException $response) {
+        } catch (ClientException $response) {
             // @TODO Consider using the following as Guzzle truncates the error message
             // $response = json_decode($ex->getResponse()->getBody()->getContents(), true);
             echo $response->getMessage();

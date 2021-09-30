@@ -8,7 +8,7 @@ use GuzzleHttp\Exception\ClientException;
 /**
  * Interface ClientInterface
  */
-Interface ClientInterface
+interface ClientInterface
 {
 
     /**
@@ -23,7 +23,7 @@ Interface ClientInterface
 
     /**
      * Gets the version number of the library
-     * 
+     *
      * @return string
      */
     public function getVersion(): string;

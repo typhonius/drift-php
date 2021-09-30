@@ -27,5 +27,4 @@ class AccountModel extends BaseModel implements BaseModelInterface
         $this->targeted = $account->targeted;
         // $this->customProperties = $account->customProperties;
     }
-
 }

@@ -28,5 +28,4 @@ class ConversationModel extends BaseModel
         // $this->conversationTags = $conversation->conversationTags;
         var_dump($conversation);
     }
-
 }

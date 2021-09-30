@@ -15,5 +15,4 @@ class ClpModel extends BaseModel
         $this->playbookName = $playbook->playbookName;
         $this->landingPageUrl = $playbook->landingPageUrl;
     }
-
 }

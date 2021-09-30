@@ -18,5 +18,8 @@
             "Drift\\Models\\": "src/Models",
             "Drift\\Response\\": "src/Response"
         }
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "3.*"
     }
 }

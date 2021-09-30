@@ -31,5 +31,4 @@ class PlaybookModel extends BaseModel
         $this->reportType = $playbook->reportType;
         $this->goals = $playbook->goals;
     }
-
 }
