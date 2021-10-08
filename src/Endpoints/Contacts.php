@@ -44,4 +44,21 @@ class Contacts extends DriftApiBase
         // @TODO see if there's some way we can provide something here.
         return $this->client->request('DELETE', "contacts/${contactId}");
     }
+
+    // @TODO this needs testing. Docs are crap.
+    public function unsubscribe($emails)
+    {
+        return $this->client->request('POST', 'emails/unsubscribe');
+    }
+
+    // @TODO this needs testing - docs also crap
+    public function createTimelineEvent()
+    {
+        return $this->client->request('POST', 'contacts/timeline');
+    }
+
+    public function getCustomAttributes()
+    {
+        return $this->client->request('GET', 'contacts/attributes');
+    }
 }

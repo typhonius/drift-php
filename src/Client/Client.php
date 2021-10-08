@@ -3,10 +3,7 @@
 namespace Drift\Client;
 
 use Psr\Http\Message\ResponseInterface;
-use GuzzleHttp\Exception\BadResponseException;
 use GuzzleHttp\Client as GuzzleClient;
-use Psr\Http\Message\RequestInterface;
-use League\OAuth2\Client\Provider\GenericProvider;
 use GuzzleHttp\Exception\ClientException;
 
 /**
@@ -119,16 +116,9 @@ class Client implements ClientInterface
         // Required for getTranscript - we need a new method here.
         // $body_json = $response->getBody()->getContents();
 
+        // var_dump($response);
         $body_json = $response->getBody();
         $body = json_decode($body_json);
-        if (is_object($body) && property_exists($body, 'data')) {
-            // Work around the weird edge case for how the accounts response is structured.
-            if (is_object($body->data) && property_exists($body->data, 'accounts')) {
-                return $body->data->accounts;
-            }
-            return $body->data;
-        }
-
         return $body;
     }
 

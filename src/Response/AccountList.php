@@ -4,7 +4,7 @@ namespace Drift\Response;
 
 use Drift\Models\AccountModel;
 
-class AccountList extends \ArrayObject
+class AccountList extends BaseModel
 {
     public function __construct($accountList)
     {
@@ -13,9 +13,11 @@ class AccountList extends \ArrayObject
                 function ($account) {
                     return new AccountModel($account);
                 },
-                $accountList
+                $accountList->data->accounts
             ),
             self::ARRAY_AS_PROPS
         );
+
+        $this->setPagination($accountList->data);
     }
 }

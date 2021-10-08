@@ -30,11 +30,14 @@ class Users extends DriftApiBase
         $request = $this->client->request('PATCH', 'users/update', $options);
     }
 
-    public function meetings()
+    public function meetings($startTime = null, $endTime = null)
     {
-        // Change these to not be hard coded.
-        $this->client->addQuery('min_start_time', "1609419600000");
-        $this->client->addQuery('max_start_time', hrtime(true));
+        // Default start time up to 30 days ago.
+        $startTime = $startTime ?: round(microtime(true) * 1000) - 2592000000;
+        $endTime = $endTime ?: round(microtime(true) * 1000) + 1000000000;
+
+        $this->client->addQuery('min_start_time', $startTime);
+        $this->client->addQuery('max_start_time', $endTime);
         return new MeetingList($this->client->request('GET', 'users/meetings/org'));
     }
 }

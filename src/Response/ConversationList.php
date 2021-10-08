@@ -4,7 +4,7 @@ namespace Drift\Response;
 
 use Drift\Models\ConversationModel;
 
-class ConversationList extends \ArrayObject
+class ConversationList extends BaseList
 {
     public function __construct($conversationList)
     {
@@ -13,9 +13,15 @@ class ConversationList extends \ArrayObject
                 function ($conversation) {
                     return new ConversationModel($conversation);
                 },
-                $conversationList
+                $conversationList->data
             ),
             self::ARRAY_AS_PROPS
         );
+
+        $this->setPagination($conversationList);
+
+
+        // @TODO implement a next method which should look at pagination and return the query required to get the next data
+        // Potentially best to have a List class which extends \ArrayObject and use that instead.
     }
 }

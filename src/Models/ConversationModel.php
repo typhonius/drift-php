@@ -17,15 +17,14 @@ class ConversationModel extends BaseModel
 
     public function __construct($conversation)
     {
-        // $this->id = $conversation->id;
+        $this->id = $conversation->id;
         // $this->participants = $conversation->participants;
-        // $this->status = $conversation->status;
-        // $this->contactId = $conversation->contactId;
-        // $this->inboxId = $conversation->inboxId;
+        $this->status = $conversation->status;
+        $this->contactId = $conversation->contactId;
+        $this->inboxId = $conversation->inboxId;
         // $this->createdAt = $usconversationer->createdAt;
-        // $this->updatedAt = $conversation->updatedAt;
+        $this->updatedAt = $conversation->updatedAt;
         // $this->relatedPlaybookId = $conversation->relatedPlaybookId;
         // $this->conversationTags = $conversation->conversationTags;
-        var_dump($conversation);
     }
 }

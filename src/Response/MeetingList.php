@@ -13,7 +13,7 @@ class MeetingList extends \ArrayObject
                 function ($meeting) {
                     return new MeetingModel($meeting);
                 },
-                $meetingList
+                $meetingList->data
             ),
             self::ARRAY_AS_PROPS
         );
