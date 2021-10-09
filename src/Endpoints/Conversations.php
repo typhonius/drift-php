@@ -4,6 +4,8 @@ namespace Drift\Endpoints;
 
 use Drift\Response\ConversationList;
 use Drift\Models\ConversationModel;
+use Drift\Response\MessagesList;
+use Drift\Models\MessageModel;
 
 class Conversations extends DriftApiBase
 {

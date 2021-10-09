@@ -4,7 +4,7 @@ namespace Drift\Response;
 
 use Drift\Models\AccountModel;
 
-class AccountList extends BaseModel
+class AccountList extends BaseList
 {
     public function __construct($accountList)
     {

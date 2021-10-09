@@ -38,7 +38,7 @@ class Client implements ClientInterface
     private $client;
 
     /**
-     * @var token The secret token used to authenticate API calls.
+     * @var string The secret token used to authenticate API calls.
      */
     private $token;
 
@@ -55,7 +55,13 @@ class Client implements ClientInterface
             $this->baseUri = $base_uri;
         }
 
-        $this->client = new GuzzleClient(['base_uri' => $this->baseUri]);
+        $client = new GuzzleClient(['base_uri' => $this->baseUri]);
+        $this->setClient($client);
+    }
+
+    public function setClient($client)
+    {
+        $this->client = $client;
     }
 
     /**
@@ -74,16 +80,12 @@ class Client implements ClientInterface
         return self::VERSION;
     }
 
-
-    /**
-     * @inheritdoc
-     */
-    public function request(string $verb, string $path, array $options = [])
+    public function modifyOptions()
     {
+        // Combine options set globally e.g. headers with options set by individual API calls e.g. form_params.
+        $options = $this->options + $this->requestOptions;
 
-        $options['headers'] = [
-            'Authorization' => 'Bearer ' . $this->token,
-        ];
+        $options['headers']['Authorization'] = 'Bearer ' . $this->token;
 
         $userAgent = sprintf(
             "%s/%s (https://github.com/typhonius/drift-php)",
@@ -91,11 +93,34 @@ class Client implements ClientInterface
             $this->getVersion()
         );
 
-        $options['headers']['User-Agent'] = $userAgent;
+        if (isset($options['headers']['User-Agent']) && is_array($options['headers']['User-Agent'])) {
+            array_unshift($options['headers']['User-Agent'], $userAgent);
+            $options['headers']['User-Agent'] = implode(' ', array_unique($options['headers']['User-Agent']));
+        } else {
+            $options['headers']['User-Agent'] = $userAgent;
+        }
+
         $options['query'] = $this->query;
 
+        return $options;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function request(string $verb, string $path, array $options = [])
+    {
+
+        // Put options sent with API calls into a property so they can be accessed
+        // and therefore tested in tests.
+        $this->requestOptions = $options;
+
+        // Modify the options to combine options set as part of the API call as well
+        // as those set by tools extending this library.
+        $modifiedOptions = $this->modifyOptions();
+
         try {
-            $response = $this->client->$verb($path, $options);
+            $response = $this->client->$verb($path, $modifiedOptions);
         } catch (ClientException $response) {
             // @TODO Consider using the following as Guzzle truncates the error message
             // $response = json_decode($ex->getResponse()->getBody()->getContents(), true);

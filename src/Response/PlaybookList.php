@@ -4,7 +4,7 @@ namespace Drift\Response;
 
 use Drift\Models\PlaybookModel;
 
-class PlaybookList extends BaseModel
+class PlaybookList extends BaseList
 {
     public function __construct($playbookList)
     {

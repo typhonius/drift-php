@@ -1,0 +1,13 @@
+{
+    "data": {
+        "ownerId": 18807,
+        "name": "Kristin's company",
+        "domain": "kristinstest.com",
+        "accountId": "0bt5b47b-2a06-4816-883e-82592ZZ9908a",
+        "deleted": true,
+        "createDateTime": 1518101450213,
+        "updateDateTime": 1537463118339,
+        "targeted": true,
+        "customProperties": { }
+    }
+}

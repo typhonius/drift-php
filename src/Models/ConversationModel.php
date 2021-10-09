@@ -22,7 +22,7 @@ class ConversationModel extends BaseModel
         $this->status = $conversation->status;
         $this->contactId = $conversation->contactId;
         $this->inboxId = $conversation->inboxId;
-        // $this->createdAt = $usconversationer->createdAt;
+        // $this->createdAt = $conversation->createdAt;
         $this->updatedAt = $conversation->updatedAt;
         // $this->relatedPlaybookId = $conversation->relatedPlaybookId;
         // $this->conversationTags = $conversation->conversationTags;

@@ -19,7 +19,32 @@
             "Drift\\Response\\": "src/Response"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Drift\\Tests\\": "tests/"
+        }
+    },
     "require-dev": {
-        "squizlabs/php_codesniffer": "3.*"
+        "squizlabs/php_codesniffer": "3.*",
+        "phpunit/phpunit": "^9",
+        "phpstan/phpstan": "^0.12",
+        "phpstan/phpstan-phpunit": "^0.12"
+    },
+    "scripts": {
+        "lint": [
+            "find src -name '*.php' -print0 | xargs -0 -n1 php -l",
+            "find tests -name '*.php' -print0 | xargs -0 -n1 php -l"
+        ],
+        "cs": "phpcs --standard=PSR12 -n src tests --ignore=./tests/logs/*",
+        "cbf": "phpcbf --standard=PSR12 -n src tests --ignore=./tests/logs/*",
+        "unit": "php -dpcov.enabled=1 -dpcov.directory=. -dpcov.exclude='~vendor~' ./vendor/bin/phpunit --configuration=phpunit.xml --testdox",
+        "stan": "phpstan analyse",
+        "test": [
+            "@lint",
+            "@unit",
+            "@cs",
+            "@stan"
+        ],
+        "coveralls": "php ./vendor/bin/php-coveralls -v"
     }
 }
