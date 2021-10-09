@@ -34,7 +34,7 @@ class Users extends DriftApiBase
     {
         // Default start time up to 30 days ago.
         $startTime = $startTime ?: round(microtime(true) * 1000) - 2592000000;
-        $endTime = $endTime ?: round(microtime(true) * 1000) + 1000000000;
+        $endTime = $endTime ?: round(microtime(true) * 1000);
 
         $this->client->addQuery('min_start_time', $startTime);
         $this->client->addQuery('max_start_time', $endTime);
