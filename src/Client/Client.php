@@ -149,9 +149,11 @@ class Client implements ClientInterface
         // if there's a data element AND a single object inside it won't be.
         // Sometimes there won't be a data element (wtf)
         // We should make it consistent and remove the data element before passing back either an object or an array
-        if (property_exists($body, 'data')) {
-            return $body->data;
-        }
+
+        // Arrghhh but that then breaks pagination because data and pagination are siblings (at least for conversations)
+        // if (property_exists($body, 'data')) {
+        //     return $body->data;
+        // }
 
         return $body;
     }

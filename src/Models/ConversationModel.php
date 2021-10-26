@@ -17,6 +17,7 @@ class ConversationModel extends BaseModel
 
     public function __construct($conversation)
     {
+        $conversation = $this->normaliseModel($conversation);
         $this->id = $conversation->id;
         // $this->participants = $conversation->participants;
         $this->status = $conversation->status;

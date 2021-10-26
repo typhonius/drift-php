@@ -13,7 +13,7 @@ class AccountList extends BaseList
                 function ($account) {
                     return new AccountModel($account);
                 },
-                $accountList->accounts
+                $accountList->data->accounts
             ),
             self::ARRAY_AS_PROPS
         );
