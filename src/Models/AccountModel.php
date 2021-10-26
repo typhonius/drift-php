@@ -17,6 +17,7 @@ class AccountModel extends BaseModel implements BaseModelInterface
 
     public function __construct($account)
     {
+        $account = $this->normaliseModel($account);
         $this->ownerId = $account->ownerId;
         $this->name = $account->name;
         $this->domain = $account->domain;

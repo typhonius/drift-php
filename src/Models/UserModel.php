@@ -20,6 +20,7 @@ class UserModel extends BaseModel
 
     public function __construct($user)
     {
+        $user = $this->normaliseModel($user);
         $this->id = $user->id;
         $this->orgId = $user->orgId;
         $this->name = $user->name;

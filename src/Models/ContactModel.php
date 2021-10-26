@@ -11,6 +11,7 @@ class ContactModel extends BaseModel
 
     public function __construct($contact)
     {
+        $contact = $this->normaliseModel($contact);
         $this->attributes = $contact->attributes;
         $this->id = $contact->id;
         $this->createdAt = $contact->createdAt;
