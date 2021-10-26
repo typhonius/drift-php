@@ -12,7 +12,7 @@ abstract class BaseList extends \ArrayObject
     {
         if (property_exists($response, 'pagination')) {
             $this->more = $response->pagination->more;
-            if ($response->more) {
+            if ($this->more) {
                 $this->next = $response->pagination->next;
             }
         }
