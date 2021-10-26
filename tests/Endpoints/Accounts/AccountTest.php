@@ -1,6 +1,6 @@
 <?php
 
-namespace Drift\Tests\Endpoints;
+namespace Drift\Tests\Endpoints\Accounts;
 
 use Drift\Tests\DriftApiTestBase;
 use Drift\Endpoints\Accounts;
@@ -25,8 +25,8 @@ class AccountsTest extends DriftApiTestBase
         $response = $this->getPsr7JsonResponseForFixture('Endpoints/Accounts/getAll.json');
         $client = $this->getMockClient($response);
 
-        $application = new Accounts($client);
-        $result = $application->getAll();
+        $accounts = new Accounts($client);
+        $result = $accounts->getAll();
 
         $this->assertInstanceOf('\Drift\Response\AccountList', $result);
         $this->assertNotEmpty($result);

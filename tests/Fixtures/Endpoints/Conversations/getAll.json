@@ -1,0 +1,38 @@
+{
+    "data": [
+      {
+              "status": "closed",
+              "contactId": 1238157803,
+              "createdAt": 1237922759384,
+              "id": 1230200520,
+              "inboxId": 123064,
+              "updatedAt": 1237922783451
+          },
+          {
+              "status": "closed",
+              "contactId": 1238007734,
+              "createdAt": 1237921765994,
+              "id": 1230183727,
+              "inboxId": 123064,
+              "updatedAt": 1237921843271
+          },
+          {
+              "status": "closed",
+              "contactId": 1231375574,
+              "createdAt": 1237887731334,
+              "id": 1239406310,
+              "inboxId": 123064,
+              "updatedAt": 1237887796881
+          }
+    ],
+    "pagination": {
+        "more": true,
+        "next": "123494893"
+    },
+    "errors": [{
+      "type": {},
+      "message": "string",
+      "param": "string (optional)"
+    }
+  ]
+}

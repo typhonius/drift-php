@@ -1,0 +1,25 @@
+{
+    "data": [{
+        "id": 1234567890,
+        "createdAt": 1617825403810,
+        "attributes": {
+            "original_ip": "45.42.45.124,52.89.138.153",
+            "_END_USER_VERSION": 87,
+            "_end_user_version": 87,
+            "recent_entrance_page_url": "http://www.yoursite.com",
+            "recent_entrance_page_title": "Your Website",
+            "_calculated_version": 87,
+            "ip": "45.42.45.124,52.89.138.153",
+            "externalId": "a12-1234",
+            "tags": [],
+            "original_entrance_page_url": "http://www.yoursite.com",
+            "original_entrance_page_title": "Your Website",
+            "socialProfiles": {},
+            "last_active": 1617826661680,
+            "first_name": "Bruce Wayne",
+            "email": "drifter222@drift.com",
+            "events": {},
+            "start_date": 1617825403810
+        }
+    }]
+}

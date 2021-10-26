@@ -4,7 +4,7 @@ namespace Drift\Response;
 
 use Drift\Models\PlaybookModel;
 
-class PlaybookList extends BaseList
+class PlaybookList extends \ArrayObject
 {
     public function __construct($playbookList)
     {
@@ -13,10 +13,9 @@ class PlaybookList extends BaseList
                 function ($playbook) {
                     return new PlaybookModel($playbook);
                 },
-                $playbookList->data
+                $playbookList
             ),
             self::ARRAY_AS_PROPS
         );
-        $this->setPagination($playbookList);
     }
 }

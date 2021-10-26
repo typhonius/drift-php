@@ -1,0 +1,25 @@
+{
+    "data": {
+        "status": "closed",
+        "participants": [
+            243266,
+            252465
+        ],
+        "contactId": 903182234,
+        "createdAt": 1528293067340,
+        "id": 116119985,
+        "relatedPlaybookId": 63505,
+        "inboxId": 116983,
+        "conversationTags": [
+            {
+                "color": "0960C5",
+                "name": "test_tag"
+            },
+            {
+                "color": "7695A5",
+                "name": "second_tag"
+            }
+        ],
+        "updatedAt": 1565798942334
+    }
+}

@@ -1,0 +1,24 @@
+[
+  {
+      "goals": [
+          {
+              "id": "f4c5112c-bb96-4827-ae72-8a316f0d325e",
+              "message": "Thanks for chatting with us! Feel free to check out our website if you have other questions"
+          },
+          {
+              "id": "aa6d7ae7-6f86-43be-960f-7db68a0c24f7",
+              "message": "Put what you want the bot to say to someone who reaches this goal, here."
+          }
+      ],
+      "id": 1122498147,
+      "name": "Target the things once",
+      "orgId": 123,
+      "meta": {},
+      "createdAt": 1568125264250,
+      "updatedAt": 1568125495515,
+      "createdAuthorId": 338419,
+      "updatedAuthorId": 338419,
+      "interactionId": 305989,
+      "reportType": "BOOK_MORE_MEETINGS"
+  }
+]

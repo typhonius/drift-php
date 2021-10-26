@@ -1,0 +1,19 @@
+{
+    "data": {
+        "id": 1,
+        "orgId": 1,
+        "name": "string",
+        "alias": "string",
+        "email": "string",
+        "phone": "string",
+        "locale": "string",
+        "availability": "string",
+        "role": "string",
+        "timeZone": "string",
+        "avatarUrl": "string",
+        "verified": true,
+        "bot": true,
+        "createdAt": "long",
+        "updatedAt": "long"
+      }
+}
