@@ -31,7 +31,7 @@ use Drift\Endpoints\Users;
 use Drift\Models\MessageModel;
 
 $token = 'D5UfO/4FfNBWn4+0cUwpLOoFzfP7Qqib4AoY+wYGsKE=';
-$client =new Client($token);
+$client = new Client($token);
 
 $account      = new Accounts($client);
 $contact      = new Contacts($client);
