@@ -144,6 +144,15 @@ class Client implements ClientInterface
         // var_dump($response);
         $body_json = $response->getBody();
         $body = json_decode($body_json);
+
+        // @TODO if there's a data element AND inside that is an array then it'll be a list
+        // if there's a data element AND a single object inside it won't be.
+        // Sometimes there won't be a data element (wtf)
+        // We should make it consistent and remove the data element before passing back either an object or an array
+        if (property_exists($body, 'data')) {
+            return $body->data;
+        }
+
         return $body;
     }
 

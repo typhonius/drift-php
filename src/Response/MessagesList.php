@@ -13,7 +13,7 @@ class MessagesList extends BaseList
                 function ($message) {
                     return new MessageModel($message);
                 },
-                $messagesList->data->messages
+                $messagesList->messages
             ),
             self::ARRAY_AS_PROPS
         );

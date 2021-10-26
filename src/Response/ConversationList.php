@@ -13,7 +13,7 @@ class ConversationList extends BaseList
                 function ($conversation) {
                     return new ConversationModel($conversation);
                 },
-                $conversationList->data
+                $conversationList
             ),
             self::ARRAY_AS_PROPS
         );

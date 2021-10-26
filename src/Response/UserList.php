@@ -13,7 +13,7 @@ class UserList extends \ArrayObject
                 function ($user) {
                     return new UserModel($user);
                 },
-                $userList->data
+                $userList
             ),
             self::ARRAY_AS_PROPS
         );

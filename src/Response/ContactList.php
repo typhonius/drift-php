@@ -13,7 +13,7 @@ class ContactList extends \ArrayObject
                 function ($contact) {
                     return new ContactModel($contact);
                 },
-                $contactList->data
+                $contactList
             ),
             self::ARRAY_AS_PROPS
         );

@@ -13,11 +13,11 @@ class AccountList extends BaseList
                 function ($account) {
                     return new AccountModel($account);
                 },
-                $accountList->data->accounts
+                $accountList->accounts
             ),
             self::ARRAY_AS_PROPS
         );
 
-        $this->setPagination($accountList->data);
+        $this->setPagination($accountList);
     }
 }
