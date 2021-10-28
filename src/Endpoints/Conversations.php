@@ -51,7 +51,7 @@ class Conversations extends DriftApiBase
             'json' => $message,
         ];
 
-        return $this->client->request('POST', "conversations/${conversationId}/messages", $options);
+        return new MessageModel($this->client->request('POST', "conversations/${conversationId}/messages", $options));
     }
 
     // @TODO This may need to be streamed so weould need a new $client->stream method. At the very least we'll need to give it a destination.

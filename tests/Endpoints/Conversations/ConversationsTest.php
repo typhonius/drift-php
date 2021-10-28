@@ -4,6 +4,7 @@ namespace Drift\Tests\Endpoints\Accounts;
 
 use Drift\Tests\DriftApiTestBase;
 use Drift\Endpoints\Conversations;
+use Drift\Models\MessageModel;
 
 class ConversationsTest extends DriftApiTestBase
 {
@@ -34,5 +35,40 @@ class ConversationsTest extends DriftApiTestBase
         foreach ($result as $element) {
             $this->assertInstanceOf('\Drift\Models\ConversationModel', $element);
         }
+    }
+
+    public function testGetMessages(): void
+    {
+        $response = $this->getPsr7JsonResponseForFixture('Endpoints/Messages/get.json');
+        $client = $this->getMockClient($response);
+
+        $conversations = new Conversations($client);
+        $result = $conversations->getMessages('1230200520');
+
+        $this->assertInstanceOf('\Drift\Response\MessagesList', $result);
+        $this->assertNotEmpty($result);
+
+        foreach ($result as $element) {
+            $this->assertInstanceOf('\Drift\Models\MessageModel', $element);
+        }
+    }
+
+    public function testCreateMessage(): void
+    {
+        $response = $this->getPsr7JsonResponseForFixture('Endpoints/Messages/create.json');
+        $client = $this->getMockClient($response);
+
+        $conversations = new Conversations($client);
+
+        $rawMessage = [
+            'userId' => 12345,
+            'body' => 'o hai',
+            'type' => 'chat',
+        ];
+        $message = new MessageModel((object) $rawMessage);
+        $result = $conversations->sendMessage('1230200520', $message);
+
+        $this->assertInstanceOf('\Drift\Models\MessageModel', $result);
+        $this->assertNotEmpty($result);
     }
 }
