@@ -1,0 +1,7 @@
+{
+    "conversationCount": {
+        "CLOSED": 1,
+        "OPEN": 2,
+        "PENDING": 3
+    }
+}
