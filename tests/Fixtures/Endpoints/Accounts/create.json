@@ -1,0 +1,20 @@
+{
+    "data": {
+        "ownerId": 21995,
+        "name": "Company Name",
+        "domain": "www.domain.com",
+        "accountId": "72232d22-beb9-4Zeb-9354-a0c33e126044",
+        "customProperties": [
+            {
+                "label": "My Number",
+                "name": " my number",
+                "value": 1,
+                "type": "NUMBER"
+            }
+        ],
+        "deleted": false,
+        "createDateTime": 1531159572668,
+        "updateDateTime": 1533243683493,
+        "targeted": true
+    }
+}

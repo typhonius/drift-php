@@ -4,6 +4,7 @@ namespace Drift\Tests\Endpoints\Accounts;
 
 use Drift\Tests\DriftApiTestBase;
 use Drift\Endpoints\Accounts;
+use Drift\Models\AccountModel;
 
 class AccountsTest extends DriftApiTestBase
 {
@@ -34,5 +35,26 @@ class AccountsTest extends DriftApiTestBase
         foreach ($result as $element) {
             $this->assertInstanceOf('\Drift\Models\AccountModel', $element);
         }
+    }
+
+    public function testCreateAccount(): void
+    {
+        $response = $this->getPsr7JsonResponseForFixture('Endpoints/Accounts/create.json');
+        $client = $this->getMockClient($response);
+
+        $accounts = new Accounts($client);
+
+        $rawAccount = [
+            'ownerId' => 21995,
+            'name' => 'Company Name',
+            'domain' => 'www.domain.com',
+            'deleted' => false,
+            'targeted' => true
+        ];
+        $account = new AccountModel((object) $rawAccount);
+        $result = $accounts->create($account);
+
+        $this->assertInstanceOf('\Drift\Models\AccountModel', $result);
+        $this->assertNotEmpty($result);
     }
 }
