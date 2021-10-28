@@ -71,4 +71,24 @@ class ConversationsTest extends DriftApiTestBase
         $this->assertInstanceOf('\Drift\Models\MessageModel', $result);
         $this->assertNotEmpty($result);
     }
+
+    public function testGetConversationStats(): void
+    {
+        $response = $this->getPsr7JsonResponseForFixture('Endpoints/Conversations/getStats.json');
+        $client = $this->getMockClient($response);
+
+        $conversations = new Conversations($client);
+        $result = $conversations->getConversationStats();
+
+        $expected = (object) [
+            'conversationCount' => (object) [
+                'CLOSED' => 1,
+                'OPEN' => 2,
+                'PENDING' => 3,
+            ]
+        ];
+
+        $this->assertEquals($expected, $result);
+        $this->assertNotEmpty($result);
+    }
 }
