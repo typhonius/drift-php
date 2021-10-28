@@ -11,8 +11,14 @@ class ContactModel extends BaseModel
 
     public function createModel($contact)
     {
-        $this->attributes = $contact->attributes;
-        $this->id = $contact->id;
-        $this->createdAt = $contact->createdAt;
+        if ($this->attributes) {
+            $this->attributes = $contact->attributes;
+        }
+        if ($this->id) {
+            $this->id = $contact->id;
+        }
+        if ($this->createdAt) {
+            $this->createdAt = $contact->createdAt;
+        }
     }
 }
