@@ -19,7 +19,7 @@ class MessageModel extends BaseModel
     public function createModel($message)
     {
         $this->id = $message->id;
-        $this->orgId = $message->orgId;
+        // $this->orgId = $message->orgId;
         $this->body = $message->body;
         $this->author = $message->author;
         $this->type = $message->type;
