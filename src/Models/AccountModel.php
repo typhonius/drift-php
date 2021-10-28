@@ -17,14 +17,30 @@ class AccountModel extends BaseModel implements BaseModelInterface
 
     public function createModel($account)
     {
-        $this->ownerId = $account->ownerId;
-        $this->name = $account->name;
-        $this->domain = $account->domain;
-        $this->accountId = $account->accountId;
-        $this->deleted = $account->deleted;
-        $this->createDateTime = $account->createDateTime;
-        $this->updateDateTime = $account->updateDateTime;
-        $this->targeted = $account->targeted;
+        if ($this->ownerId) {
+            $this->ownerId = $account->ownerId;
+        }
+        if ($this->name) {
+            $this->name = $account->name;
+        }
+        if ($this->domain) {
+            $this->domain = $account->domain;
+        }
+        if ($this->accountId) {
+            $this->accountId = $account->accountId;
+        }
+        if ($this->deleted) {
+            $this->deleted = $account->deleted;
+        }
+        if ($this->createDateTime) {
+            $this->createDateTime = $account->createDateTime;
+        }
+        if ($this->updateDateTime) {
+            $this->updateDateTime = $account->updateDateTime;
+        }
+        if ($this->targeted) {
+            $this->targeted = $account->targeted;
+        }
         // $this->customProperties = $account->customProperties;
     }
 }
