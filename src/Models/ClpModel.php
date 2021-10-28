@@ -9,7 +9,7 @@ class ClpModel extends BaseModel
     public $playbookName;
     public $landingPageUrl;
 
-    public function __construct($playbook)
+    public function createModel($playbook)
     {
         $this->playbookId = $playbook->playbookId;
         $this->playbookName = $playbook->playbookName;

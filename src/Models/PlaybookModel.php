@@ -17,7 +17,7 @@ class PlaybookModel extends BaseModel
     public $reportType;
     public $goals;
 
-    public function __construct($playbook)
+    public function createModel($playbook)
     {
         $this->id = $playbook->id;
         $this->name = $playbook->name;

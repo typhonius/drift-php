@@ -16,7 +16,7 @@ class MessageModel extends BaseModel
     public $context;
     public $attributes;
 
-    public function __construct($message)
+    public function createModel($message)
     {
         $this->id = $message->id;
         $this->orgId = $message->orgId;

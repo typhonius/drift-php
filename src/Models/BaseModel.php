@@ -2,11 +2,12 @@
 
 namespace Drift\Models;
 
-class BaseModel implements BaseModelInterface
+abstract class BaseModel implements BaseModelInterface
 {
 
-    public function __construct()
+    public function __construct($model)
     {
+        $this->createModel($this->normaliseModel($model));
     }
 
     public function normaliseModel($model)

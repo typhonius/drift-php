@@ -15,9 +15,8 @@ class ConversationModel extends BaseModel
     public $relatedPlaybookId;
     public $conversationTags;
 
-    public function __construct($conversation)
+    public function createModel($conversation)
     {
-        $conversation = $this->normaliseModel($conversation);
         $this->id = $conversation->id;
         // $this->participants = $conversation->participants;
         $this->status = $conversation->status;

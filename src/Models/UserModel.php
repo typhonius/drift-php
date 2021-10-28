@@ -18,9 +18,8 @@ class UserModel extends BaseModel
     public $createdAt;
     public $updatedAt;
 
-    public function __construct($user)
+    public function createModel($user)
     {
-        $user = $this->normaliseModel($user);
         $this->id = $user->id;
         $this->orgId = $user->orgId;
         $this->name = $user->name;

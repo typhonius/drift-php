@@ -22,7 +22,7 @@ class MeetingModel extends BaseModel implements BaseModelInterface
     public $meetingNotes;
     public $bookedBy;
 
-    public function __construct($meeting)
+    public function createModel($meeting)
     {
         $this->agentId = $meeting->agentId;
         $this->orgId = $meeting->orgId;
