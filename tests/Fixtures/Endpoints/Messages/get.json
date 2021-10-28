@@ -1,0 +1,77 @@
+{
+    "data": {
+        "messages": [
+            {
+                "id": 12342019624,
+                "conversationId": 1230200520,
+                "body": "<p>Hi there <span class=\"driftiwyg-tag-property\">Elias</span></p>",
+                "author": {
+                    "id": 1230056,
+                    "type": "user",
+                    "bot": true
+                },
+                "type": "chat",
+                "createdAt": 1237922759452,
+                "attributes": {}
+            },
+            {
+                "id": 12367319626,
+                "conversationId": 1230200520,
+                "body": "<p>Do you need assistance with something?</p>",
+                "author": {
+                    "id": 1230056,
+                    "type": "user",
+                    "bot": true
+                },
+                "type": "chat",
+                "createdAt": 1237922759509,
+                "buttons": [
+                    {
+                        "value": "yes please",
+                        "label": "yes please",
+                        "type": "reply"
+                    },
+                    {
+                        "value": "Nah I'm ok just browsing",
+                        "label": "Nah I'm ok just browsing",
+                        "type": "reply"
+                    }
+                ],
+                "attributes": {}
+            },
+            {
+                "id": 12367319635,
+                "conversationId": 1230200520,
+                "body": "yes please",
+                "author": {
+                    "id": 1238157803,
+                    "type": "contact",
+                    "bot": false
+                },
+                "type": "chat",
+                "createdAt": 1237922759589,
+                "context": {
+                    "ip": "12.34.45.239",
+                    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 11_2_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36",
+                    "href": "http://www.yourwebsite.com",
+                    "title": "Main Testing",
+                    "referrer": "",
+                    "timezone": "America/New_York",
+                    "location": {
+                        "city": "Hialeah",
+                        "region": "Florida",
+                        "country": "US",
+                        "countryName": "United States",
+                        "postalCode": "33015",
+                        "latitude": 25.9381,
+                        "longitude": -80.3146
+                    },
+                    "locale": "en"
+                },
+                "attributes": {
+                    "preMessages": []
+                }
+            }
+        ]
+    }
+}

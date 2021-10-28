@@ -1,0 +1,35 @@
+{
+    "data": {
+        "id": 12367319635,
+        "conversationId": 1230200520,
+        "body": "yes please",
+        "author": {
+            "id": 1238157803,
+            "type": "contact",
+            "bot": false
+        },
+        "type": "chat",
+        "createdAt": 1237922759589,
+        "context": {
+            "ip": "12.34.45.239",
+            "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 11_2_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36",
+            "href": "http://www.yourwebsite.com",
+            "title": "Main Testing",
+            "referrer": "",
+            "timezone": "America/New_York",
+            "location": {
+                "city": "Hialeah",
+                "region": "Florida",
+                "country": "US",
+                "countryName": "United States",
+                "postalCode": "33015",
+                "latitude": 25.9381,
+                "longitude": -80.3146
+            },
+            "locale": "en"
+        },
+        "attributes": {
+            "preMessages": []
+        }
+    }
+}
