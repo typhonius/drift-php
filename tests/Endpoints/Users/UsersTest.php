@@ -35,4 +35,20 @@ class UsersTest extends DriftApiTestBase
             $this->assertInstanceOf('\Drift\Models\UserModel', $element);
         }
     }
+
+    public function testGetBookedMeetings(): void
+    {
+        $response = $this->getPsr7JsonResponseForFixture('Endpoints/Meetings/get.json');
+        $client = $this->getMockClient($response);
+
+        $users = new Users($client);
+        $result = $users->meetings();
+
+        $this->assertInstanceOf('\Drift\Response\MeetingList', $result);
+        $this->assertNotEmpty($result);
+
+        foreach ($result as $element) {
+            $this->assertInstanceOf('\Drift\Models\MeetingModel', $element);
+        }
+    }
 }

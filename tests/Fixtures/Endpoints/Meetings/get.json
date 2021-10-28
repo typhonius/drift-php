@@ -1,0 +1,22 @@
+{
+    "data": [
+        {
+            "agentId": "int",
+            "orgId": "int",
+            "status": "string",
+            "meetingSource": "string", 
+            "schedulerId": "long", 
+            "eventId": "string",
+            "slug": "string", 
+            "slotStart": "long",
+            "slotEnd": "long",
+            "updatedAt": "long",
+            "scheduledAt": "long",
+            "meetingType": "string",
+            "conversationId": "long", 
+            "endUserTimeZone": "string", 
+            "meetingNotes": "string", 
+            "bookedBy": "int"   
+        }
+    ]
+  }
