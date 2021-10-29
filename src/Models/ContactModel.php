@@ -11,13 +11,13 @@ class ContactModel extends BaseModel
 
     public function createModel($contact)
     {
-        if ($this->attributes) {
+        if ($contact->attributes) {
             $this->attributes = $contact->attributes;
         }
-        if ($this->id) {
+        if ($contact->id) {
             $this->id = $contact->id;
         }
-        if ($this->createdAt) {
+        if ($contact->createdAt) {
             $this->createdAt = $contact->createdAt;
         }
     }

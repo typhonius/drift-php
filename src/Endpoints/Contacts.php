@@ -24,7 +24,7 @@ class Contacts extends DriftApiBase
         $options = [
             'json' => $contact
         ];
-        $request = $this->client->request('POST', 'contacts', $options);
+        return new ContactModel($this->client->request('POST', 'contacts', $options));
     }
 
     public function update($userId, $name, $value)

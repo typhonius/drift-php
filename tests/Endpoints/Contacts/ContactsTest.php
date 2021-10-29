@@ -4,6 +4,7 @@ namespace Drift\Tests\Endpoints\Contacts;
 
 use Drift\Tests\DriftApiTestBase;
 use Drift\Endpoints\Contacts;
+use Drift\Models\ContactModel;
 
 class ContactsTest extends DriftApiTestBase
 {
@@ -34,5 +35,35 @@ class ContactsTest extends DriftApiTestBase
         foreach ($result as $element) {
             $this->assertInstanceOf('\Drift\Models\ContactModel', $element);
         }
+    }
+
+    public function testCreateContact(): void
+    {
+        $response = $this->getPsr7JsonResponseForFixture('Endpoints/Contacts/create.json');
+        $client = $this->getMockClient($response);
+
+        $newbie = new ContactModel((object)[
+            'attributes' => (object) [
+                'email' => 'amalone@drift.com',
+            ]
+        ]);
+
+        $contacts = new Contacts($client);
+        $result = $contacts->create($newbie);
+
+        $expected = new ContactModel((object)[
+            'attributes' => (object) [
+                'email' => 'basic.contact@email.com',
+                'events' => (object)[],
+                'socialProfiles' => (object)[],
+                'start_date' => 1511336276540
+            ],
+            'createdAt' => 1511336276540,
+            'id' => 444406191,
+        ]);
+
+        $this->assertInstanceOf('\Drift\Models\ContactModel', $result);
+        $this->assertEquals($expected, $result);
+        $this->assertNotEmpty($result);
     }
 }
