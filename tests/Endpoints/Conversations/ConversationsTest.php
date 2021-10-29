@@ -91,4 +91,32 @@ class ConversationsTest extends DriftApiTestBase
         $this->assertEquals($expected, $result);
         $this->assertNotEmpty($result);
     }
+
+    public function testCreateConversation(): void
+    {
+        $response = $this->getPsr7JsonResponseForFixture('Endpoints/Conversations/create.json');
+        $client = $this->getMockClient($response);
+
+        $icebreaker = [
+            'email' => 'amalone@drift.com',
+            "message" => [
+                "body" => "A conversation was started <a href='www.yoururl.com'>here</a>, let's resume from drift!",
+            ]
+        ];
+
+        $conversations = new Conversations($client);
+        $result = $conversations->create($icebreaker);
+
+        $expected = (object) [
+            'status' => 'open',
+            'contactId' => 1261122150,
+            'createdAt' => 1548700064840,
+            'updatedAt' => 1548700064840,
+            'id' => 464032472,
+            'inboxId' => 116983
+        ];
+
+        $this->assertEquals($expected, $result);
+        $this->assertNotEmpty($result);
+    }
 }
