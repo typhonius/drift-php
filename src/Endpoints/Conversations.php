@@ -6,6 +6,7 @@ use Drift\Response\ConversationList;
 use Drift\Models\ConversationModel;
 use Drift\Response\MessagesList;
 use Drift\Models\MessageModel;
+use Drift\Models\GenericModel;
 
 class Conversations extends DriftApiBase
 {
@@ -42,7 +43,7 @@ class Conversations extends DriftApiBase
             'json' => $conversation,
         ];
 
-        return $this->client->request('POST', 'conversations/new', $options);
+        return new GenericModel($this->client->request('POST', 'conversations/new', $options));
     }
 
     public function sendMessage($conversationId, MessageModel $message)

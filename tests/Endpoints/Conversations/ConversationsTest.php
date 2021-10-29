@@ -5,6 +5,7 @@ namespace Drift\Tests\Endpoints\Accounts;
 use Drift\Tests\DriftApiTestBase;
 use Drift\Endpoints\Conversations;
 use Drift\Models\MessageModel;
+use Drift\Models\GenericModel;
 
 class ConversationsTest extends DriftApiTestBase
 {
@@ -107,15 +108,16 @@ class ConversationsTest extends DriftApiTestBase
         $conversations = new Conversations($client);
         $result = $conversations->create($icebreaker);
 
-        $expected = (object) [
+        $expected = new GenericModel((object)[
             'status' => 'open',
             'contactId' => 1261122150,
             'createdAt' => 1548700064840,
             'updatedAt' => 1548700064840,
             'id' => 464032472,
             'inboxId' => 116983
-        ];
+        ]);
 
+        $this->assertInstanceOf('\Drift\Models\GenericModel', $result);
         $this->assertEquals($expected, $result);
         $this->assertNotEmpty($result);
     }
