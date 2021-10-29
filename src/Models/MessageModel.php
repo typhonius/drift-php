@@ -18,34 +18,34 @@ class MessageModel extends BaseModel
 
     public function createModel($message)
     {
-        if ($this->id) {
+        if ($message->id) {
             $this->id = $message->id;
         }
-        if ($this->userId) {
+        if ($message->userId) {
             $this->userId = $message->userId;
         }
-        if ($this->body) {
+        if ($message->body) {
             $this->body = $message->body;
         }
-        if ($this->author) {
+        if ($message->author) {
             $this->author = $message->author;
         }
-        if ($this->type) {
+        if ($message->type) {
             $this->type = $message->type;
         }
-        if ($this->conversationId) {
+        if ($message->conversationId) {
             $this->conversationId = $message->conversationId;
         }
-        if ($this->createdAt) {
+        if ($message->createdAt) {
             $this->createdAt = $message->createdAt;
         }
-        if ($this->buttons) {
+        if ($message->buttons) {
             $this->buttons = $message->buttons;
         }
-        if ($this->context) {
+        if ($message->context) {
             $this->context = $message->context;
         }
-        if ($this->attributes) {
+        if ($message->attributes) {
             $this->attributes = $message->attributes;
         }
     }
