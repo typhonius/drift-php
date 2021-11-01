@@ -1,19 +1,26 @@
 # Drift PHP
 
+![Build Status](https://github.com/typhonius/drift-php/workflows/Drift%20PHP%20build%20and%20test/badge.svg)
+[![Coverage Status](https://codecov.io/gh/typhonius/drift-php/branch/master/graph/badge.svg)](https://codecov.io/gh/typhonius/drift-php)
+
+[![License](https://poser.pugx.org/typhonius/drift-php/license.png)](https://www.versioneye.com/user/projects/5a18bd670fb24f2125873c86#tab-dependencies)
+[![Latest Stable Version](https://poser.pugx.org/typhonius/drift-php/v/stable.png)](https://packagist.org/packages/typhonius/drift-php)
+[![Latest Unstable Version](https://poser.pugx.org/typhonius/drift-php/v/unstable.png)](https://packagist.org/packages/typhonius/drift-php)
+
 ## Installation
 The SDK can be installed with Composer by adding this library as a dependency to your composer.json file:
 
 ```json
 {
     "require": {
-        "typhonius/drift-php": "^0.0.1"
+        "typhonius/drift-php": "dev-master"
     }
 }
 ```
 
 Alternatively on the command line by using:
 
-`composer require typhonius/drift-php`
+`composer require typhonius/drift-php:dev-master`
 
 ## Simple usage
 Basic usage examples for the SDK.
