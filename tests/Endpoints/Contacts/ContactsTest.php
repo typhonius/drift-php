@@ -5,6 +5,7 @@ namespace Drift\Tests\Endpoints\Contacts;
 use Drift\Tests\DriftApiTestBase;
 use Drift\Endpoints\Contacts;
 use Drift\Models\ContactModel;
+use Drift\Models\GenericModel;
 
 class ContactsTest extends DriftApiTestBase
 {
@@ -63,6 +64,27 @@ class ContactsTest extends DriftApiTestBase
         ]);
 
         $this->assertInstanceOf('\Drift\Models\ContactModel', $result);
+        $this->assertEquals($expected, $result);
+        $this->assertNotEmpty($result);
+    }
+
+    public function testCreateTimelineEvent(): void
+    {
+        $response = $this->getPsr7JsonResponseForFixture('Endpoints/Contacts/createTimelineEvent.json');
+        $client = $this->getMockClient($response);
+
+        $event = [
+            'event' => 'New External Event from <your app>',
+            'createdAt' => 1546344000000,
+            'contactId' => 1115142980
+        ];
+
+        $contacts = new Contacts($client);
+        $result = $contacts->createTimelineEvent($event);
+
+        $expected = new GenericModel((object)$event);
+
+        $this->assertInstanceOf('\Drift\Models\GenericModel', $result);
         $this->assertEquals($expected, $result);
         $this->assertNotEmpty($result);
     }

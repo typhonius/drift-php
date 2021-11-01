@@ -58,6 +58,15 @@ $now = round(microtime(true) * 1000);
 $future = round(microtime(true) * 1000) + 2592000000;
 $meetings = $user->getMeetings($now, $future)
 
+// Create a timeline event
+$microtime = round(microtime(true) * 1000);
+$event = [
+    'event' => 'New External Event from <your app>',
+    'createdAt' => $microtime,
+    'contactId' => 1115142980
+];
+$contacts = new Contacts($client);
+$contacts->createTimelineEvent($event);
 ```
 
 

@@ -4,6 +4,7 @@ namespace Drift\Endpoints;
 
 use Drift\Response\ContactList;
 use Drift\Models\ContactModel;
+use Drift\Models\GenericModel;
 
 class Contacts extends DriftApiBase
 {
@@ -52,9 +53,12 @@ class Contacts extends DriftApiBase
     }
 
     // @TODO this needs testing - docs also crap
-    public function createTimelineEvent()
+    public function createTimelineEvent($update)
     {
-        return $this->client->request('POST', 'contacts/timeline');
+        $options = [
+            'json' => $update
+        ];
+        return new GenericModel($this->client->request('POST', 'contacts/timeline', $options));
     }
 
     public function getCustomAttributes()
