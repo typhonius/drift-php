@@ -43,6 +43,7 @@ class Contacts extends DriftApiBase
     public function delete($contactId)
     {
         // @TODO see if there's some way we can provide something here.
+        // Narrator: There wasn't.
         return $this->client->request('DELETE', "contacts/${contactId}");
     }
 

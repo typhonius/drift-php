@@ -4,6 +4,7 @@ namespace Drift\Endpoints;
 
 use Drift\Response\AccountList;
 use Drift\Models\AccountModel;
+use Drift\Models\GenericModel;
 
 class Accounts extends DriftApiBase
 {
@@ -37,6 +38,6 @@ class Accounts extends DriftApiBase
     public function delete(string $accountId)
     {
         // @TODO need to create a response object for this.
-        $this->client->request('DELETE', "accounts/${accountId}");
+        return new GenericModel($this->client->request('DELETE', "accounts/${accountId}"));
     }
 }

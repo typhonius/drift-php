@@ -5,6 +5,7 @@ namespace Drift\Tests\Endpoints\Accounts;
 use Drift\Tests\DriftApiTestBase;
 use Drift\Endpoints\Accounts;
 use Drift\Models\AccountModel;
+use Drift\Models\GenericModel;
 
 class AccountsTest extends DriftApiTestBase
 {
@@ -55,6 +56,26 @@ class AccountsTest extends DriftApiTestBase
         $result = $accounts->create($account);
 
         $this->assertInstanceOf('\Drift\Models\AccountModel', $result);
+        $this->assertNotEmpty($result);
+    }
+
+    public function testDeleteAccount(): void
+    {
+        $response = $this->getPsr7JsonResponseForFixture('Endpoints/Accounts/delete.json');
+        $client = $this->getMockClient($response);
+
+        $accounts = new Accounts($client);
+        $result = $accounts->delete('18807');
+
+        $accountDeletion = [
+            'result' => 'OK',
+            'ok' => true,
+        ];
+
+        $expected = new GenericModel((object)$accountDeletion);
+
+        $this->assertInstanceOf('\Drift\Models\GenericModel', $result);
+        $this->assertEquals($expected, $result);
         $this->assertNotEmpty($result);
     }
 }
