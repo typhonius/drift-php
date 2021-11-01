@@ -4,6 +4,7 @@ namespace Drift\Tests\Endpoints\Contacts;
 
 use Drift\Tests\DriftApiTestBase;
 use Drift\Endpoints\Users;
+use GuzzleHttp\Psr7\Response;
 
 class UsersTest extends DriftApiTestBase
 {
@@ -53,5 +54,23 @@ class UsersTest extends DriftApiTestBase
         foreach ($result as $element) {
             $this->assertInstanceOf('\Drift\Models\MeetingModel', $element);
         }
+    }
+
+    public function testDelete(): void
+    {
+        // @TODO create a trait for this.
+        $stream = $this->getPsr7StreamForString('');
+        $response = new Response(200, ['Content-Type' => 'application/json'], $stream);
+        $client = $this->getMockClient($response);
+
+        $users = new Users($client);
+        $update = [
+            'alias' => 'Adam (online)',
+            'availability' => 'AVAILABLE'
+        ];
+        $result = $users->update(21965, $update);
+
+        // Assert the response is NULL because that's what the API gives us back... even though the docs say otherwise!
+        $this->assertEmpty($result);
     }
 }

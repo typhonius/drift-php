@@ -19,12 +19,10 @@ class Users extends DriftApiBase
         return new UserList($this->client->request('GET', 'users/list'));
     }
 
-    public function update($userId, $name, $value)
+    public function update($userId, $update)
     {
         $options = [
-            'json' => [
-                $name => $value,
-            ],
+            'json' => $update
         ];
         $this->client->addQuery('userId', $userId);
         $request = $this->client->request('PATCH', 'users/update', $options);

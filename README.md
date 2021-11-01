@@ -65,8 +65,15 @@ $event = [
     'createdAt' => $microtime,
     'contactId' => 1115142980
 ];
-$contacts = new Contacts($client);
-$contacts->createTimelineEvent($event);
+$contact->createTimelineEvent($event);
+
+// Updating a user's alias and availability
+$update = [
+    'alias' => 'Adam (online)',
+    'availability' => 'AVAILABLE'
+];
+$userId = 21965;
+$user->update($userId, $update);
 ```
 
 
