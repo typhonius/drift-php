@@ -47,14 +47,19 @@ class Contacts extends DriftApiBase
     }
 
     // @TODO this needs testing. Docs are crap.
-    public function unsubscribe($emails)
+    public function unsubscribe(array $emails)
     {
-        return $this->client->request('POST', 'emails/unsubscribe');
+        $options = [
+            'json' => $emails
+        ];
+        return $this->client->request('POST', 'emails/unsubscribe', $options);
     }
 
     // @TODO this needs testing - docs also crap
-    public function createTimelineEvent($update)
+    public function createTimelineEvent(array $update)
     {
+        // Do we put validation here? We need a contactId (or externalId) and event name.
+        // Could look at using named arguments...?
         $options = [
             'json' => $update
         ];

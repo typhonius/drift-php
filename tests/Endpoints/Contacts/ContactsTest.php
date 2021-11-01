@@ -6,6 +6,7 @@ use Drift\Tests\DriftApiTestBase;
 use Drift\Endpoints\Contacts;
 use Drift\Models\ContactModel;
 use Drift\Models\GenericModel;
+use GuzzleHttp\Psr7\Response;
 
 class ContactsTest extends DriftApiTestBase
 {
@@ -87,5 +88,31 @@ class ContactsTest extends DriftApiTestBase
         $this->assertInstanceOf('\Drift\Models\GenericModel', $result);
         $this->assertEquals($expected, $result);
         $this->assertNotEmpty($result);
+    }
+
+    public function testUnsubscribe(): void
+    {
+        $stream = $this->getPsr7StreamForString('');
+        $response = new Response(200, ['Content-Type' => 'application/json'], $stream);
+        $client = $this->getMockClient($response);
+
+        $contacts = new Contacts($client);
+        $result = $contacts->unsubscribe(['amalone@drift.com']);
+
+        // Assert the response is NULL because that's what the API gives us back... nothing.
+        $this->assertEmpty($result);
+    }
+
+    public function testDelete(): void
+    {
+        $stream = $this->getPsr7StreamForString('');
+        $response = new Response(202, ['Content-Type' => 'application/json'], $stream);
+        $client = $this->getMockClient($response);
+
+        $contacts = new Contacts($client);
+        $result = $contacts->delete(1115142980);
+
+        // Assert the response is NULL because that's what the API gives us back... nothing.
+        $this->assertEmpty($result);
     }
 }

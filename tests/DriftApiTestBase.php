@@ -21,6 +21,20 @@ abstract class DriftApiTestBase extends TestCase
 {
 
     /**
+     * Returns a PSR7 stream for a given raw JSON string.
+     *
+     * @param string $string The string to create the stream for.
+     * @return Stream
+     */
+    protected function getPsr7StreamForString($string): Stream
+    {
+        $stream = Utils::streamFor($string);
+        $this->assertInstanceOf(Stream::class, $stream);
+
+        return $stream;
+    }
+
+    /**
      * Returns a PSR7 Stream for a given fixture.
      *
      * @param  string $fixture The fixture to create the stream for.
@@ -30,8 +44,7 @@ abstract class DriftApiTestBase extends TestCase
     {
         $path = sprintf('%s/Fixtures/%s', __DIR__, $fixture);
         $this->assertFileExists($path);
-        $stream = Utils::streamFor(file_get_contents($path));
-        $this->assertInstanceOf(Stream::class, $stream);
+        $stream = $this->getPsr7StreamForString(file_get_contents($path));
 
         return $stream;
     }
